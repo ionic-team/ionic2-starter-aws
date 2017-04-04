@@ -1,0 +1,25 @@
+<ion-content padding>
+  <form (submit)="login()">
+    <ion-list>
+
+      <ion-item>
+        <ion-label floating>Username</ion-label>
+        <ion-input [(ngModel)]="loginDetails.username" type="text" name="username"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>Password</ion-label>
+        <ion-input [(ngModel)]="loginDetails.password" type="password" name="password"></ion-input>
+      </ion-item>
+
+      <div padding>
+        <button ion-button color="primary" block>LOGIN</button>
+      </div>
+
+      <div padding>
+        <p>Don't have an account yet? <a (click)="signup()">Create your free account.</a>
+      </div>
+
+    </ion-list>
+  </form>
+</ion-content>

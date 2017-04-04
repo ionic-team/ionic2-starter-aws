@@ -1,0 +1,30 @@
+<ion-content>
+  <form (submit)="signup()">
+    <ion-list>
+
+      <ion-item>
+        <ion-label floating>Username</ion-label>
+        <ion-input type="text" [(ngModel)]="userDetails.username" name="username"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>Email</ion-label>
+        <ion-input type="email" [(ngModel)]="userDetails.email" name="email"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>Password</ion-label>
+        <ion-input type="password" [(ngModel)]="userDetails.password" name="password"></ion-input>
+      </ion-item>
+
+      <div padding>
+        <button ion-button color="primary" block>Register</button>
+      </div>
+
+      <div padding>
+        <p>Already have an account? <a (click)="login()">Login</a>
+      </div>
+
+    </ion-list>
+  </form>
+</ion-content>  
