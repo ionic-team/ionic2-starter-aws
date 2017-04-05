@@ -7,6 +7,8 @@ import { LoginPage } from '../pages/login/login';
 import { SignupPage } from '../pages/signup/signup';
 import { ConfirmPage } from '../pages/confirm/confirm';
 import { HomePage } from '../pages/home/home';
+import { TasksPage } from '../pages/tasks/tasks';
+import { TasksCreatePage } from '../pages/tasks-create/tasks-create';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -14,6 +16,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { User } from '../providers/user';
 import { AWS } from '../providers/aws';
 import { Cognito } from '../providers/aws.cognito';
+import { DynamoDB } from '../providers/aws.dynamodb';
 import { MobileAnalytics } from '../providers/aws.analytics';
 
 @NgModule({
@@ -22,7 +25,9 @@ import { MobileAnalytics } from '../providers/aws.analytics';
     LoginPage,
     SignupPage,
     ConfirmPage,
-    HomePage
+    HomePage,
+    TasksPage,
+    TasksCreatePage
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -33,7 +38,9 @@ import { MobileAnalytics } from '../providers/aws.analytics';
     LoginPage,
     SignupPage,
     ConfirmPage,
-    HomePage
+    HomePage,
+    TasksPage,
+    TasksCreatePage
   ],
   providers: [
     Config,
@@ -44,6 +51,7 @@ import { MobileAnalytics } from '../providers/aws.analytics';
     User,
     AWS,
     Cognito,
+    DynamoDB,
     MobileAnalytics
   ]
 })

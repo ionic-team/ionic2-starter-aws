@@ -16,6 +16,10 @@ export class User {
     this.user = null;
   }
 
+  getUser() {
+    return this.cognito.getCurrentUser();
+  }
+
   login(username, password) {
     return new Promise((resolve, reject) => {
       let self = this;
@@ -37,6 +41,7 @@ export class User {
            'Logins': logins
           });
 
+          self.user = self.cognito.getUserPool().getCurrentUser();
           resolve(result);
         },
 

@@ -2,8 +2,9 @@ import { Component } from '@angular/core';
 
 import { NavController } from 'ionic-angular';
 import { LoginPage } from '../login/login';
+import { TasksPage } from '../tasks/tasks';
 
-import { MobileAnalytics, User } from '../../providers/providers';
+import { DynamoDB, MobileAnalytics, User } from '../../providers/providers';
 
 @Component({
   selector: 'page-home',
@@ -11,8 +12,10 @@ import { MobileAnalytics, User } from '../../providers/providers';
 })
 export class HomePage {
 
-  constructor(public navCtrl: NavController, public user: User, public analytics: MobileAnalytics) {
-   analytics.track('viewedHomepage'); 
+  public tasksPage: any;
+
+  constructor(public navCtrl: NavController, public user: User, public analytics: MobileAnalytics, public db: DynamoDB) {
+    this.tasksPage = TasksPage;
   }
 
   logout() {

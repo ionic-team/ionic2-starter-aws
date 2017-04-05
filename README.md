@@ -24,3 +24,17 @@ $ ionic run ios
 
 Substitute ios for android if not on a Mac.
 
+### Additional Dependencies
+
+```bash
+$ npm install --save aws-sdk
+$ npm install --save aws-sdk-mobile-analytics
+$ npm install --save amazon-cognito-identity-js
+$ npm install --save @types/node
+```
+
+### Configuration
+
+This starter allows you to setup multiple configurations (e.g. development vs production). The config that is loaded is determined by the file you choose to import into the `src/app/app.env.ts` file.
+
+Configs live within the `src/app/config` directory. The development configuration is loaded by default.
