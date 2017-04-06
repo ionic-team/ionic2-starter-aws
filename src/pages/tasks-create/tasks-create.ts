@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, ViewController } from 'ionic-angular';
+import { NavController, NavParams, ViewController, Platform } from 'ionic-angular';
 
 @Component({
   selector: 'page-tasks-create',
@@ -11,10 +11,14 @@ export class TasksCreatePage {
 
   item: any;
 
+  isAndroid: boolean;
+
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
-              public viewCtrl: ViewController) {
+              public viewCtrl: ViewController,
+              public platform: Platform) {
+    this.isAndroid = platform.is('android');
     this.item = {
       'id': navParams.get('id'),
       'category': 'Todo'

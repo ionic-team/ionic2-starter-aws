@@ -2,20 +2,12 @@
 
   <ion-navbar>
     <ion-title>New Task</ion-title>
-    <ion-buttons start>
-      <button ion-button (click)="cancel()">
+    <ion-buttons end>
+      <button ion-button [attr.icon-only]="!isAndroid ? null : ''" (click)="cancel()">
         <span color="primary" showWhen="ios">
           Cancel
         </span>
-        <ion-icon name="md-close" showWhen="android,windows"></ion-icon>
-      </button>
-    </ion-buttons>
-    <ion-buttons end>
-      <button ion-button (click)="done()" [disabled]="!isReadyToSave" strong>
-        <span color="primary" showWhen="ios">
-          Done
-        </span>
-        <ion-icon name="md-checkmark" showWhen="core,android,windows"></ion-icon>
+        <ion-icon name="md-close" showWhen="core,android,windows"></ion-icon>
       </button>
     </ion-buttons>
   </ion-navbar>
@@ -23,19 +15,23 @@
 </ion-header>
 
 
-<ion-content padding>
+<ion-content>
   <ion-list>
     <ion-item>
-      <ion-label floating>Category:</ion-label>
+      <ion-label>Category</ion-label>
       <ion-select [(ngModel)]="item.category" name="category">
         <ion-option value="todo" selected="true">Todo</ion-option>
         <ion-option value="errand">Errand</ion-option>
       </ion-select>
     </ion-item>
 
-    <ion-item>
-      <ion-label floating>Task Description</ion-label>
-      <ion-textarea [(ngModel)]="item.description" name="description"></ion-textarea>
+    <ion-item class="custom-item">
+      <ion-label>Task Description</ion-label>
+      <ion-textarea rows="5" [(ngModel)]="item.description" name="description"></ion-textarea>
     </ion-item>
+
+    <div padding>
+      <button block icon-left ion-button color="primary" (click)="done()"><ion-icon name="md-checkmark" showWhen="core,android,windows"></ion-icon>Create task</button>
+    </div>
   </ion-list>
 </ion-content>

@@ -79,7 +79,7 @@ export class TasksPage {
     addModal.present();
   }
 
-  deleteTask(task) {
+  deleteTask(task, index) {
     let self = this;
     this.db.getDocumentClient().delete({
       'TableName': self.taskTable,
@@ -87,6 +87,10 @@ export class TasksPage {
         'id': task.id
       }
     }, function(err, data) {
+      if (!err) {
+        console.log('delete idx: ', index);
+        self.items.splice(index, 1);
+      }
       console.log(err);
       console.log(data);          
     });

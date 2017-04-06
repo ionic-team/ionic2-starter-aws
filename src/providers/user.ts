@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
 
 import { config } from '../app/app.env';
 import { AWS } from './providers';
@@ -12,7 +11,7 @@ export class User {
   private user: any;
   public loggedIn: boolean = false;
 
-  constructor(public http: Http, public aws: AWS, public cognito: Cognito) {
+  constructor(public aws: AWS, public cognito: Cognito) {
     this.user = null;
   }
 

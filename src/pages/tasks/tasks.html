@@ -11,17 +11,17 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content>
 
     <ion-list>
-      <ion-item-sliding *ngFor="let item of items">
+      <ion-item-sliding *ngFor="let item of items; let idx = index;">
         <button ion-item>
           <h2>{{item.category}}</h2>
           <p>{{item.description}}</p>
         </button>
 
         <ion-item-options>
-          <button ion-button color="danger" (click)="deleteTask(item)">DELETE</button>
+          <button ion-button color="danger" (click)="deleteTask(item, idx)">DELETE</button>
         </ion-item-options>
       </ion-item-sliding>
     </ion-list>

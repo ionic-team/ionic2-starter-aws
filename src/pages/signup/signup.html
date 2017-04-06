@@ -1,4 +1,7 @@
 <ion-content>
+  <div text-center class="logo">
+    <img src="assets/ionic-aws-logo.png" />
+  </div>
   <form (submit)="signup()">
     <ion-list>
 
@@ -21,8 +24,8 @@
         <button ion-button color="primary" block>Register</button>
       </div>
 
-      <div padding>
-        <p>Already have an account? <a (click)="login()">Login</a>
+      <div padding text-center>
+        <p><a (click)="login()">Return to login</a>
       </div>
 
     </ion-list>

@@ -1,5 +1,7 @@
 import { APP_INITIALIZER, NgModule, ErrorHandler } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
+
 
 import { Config } from './app.config';
 import { MyApp } from './app.component';
@@ -7,6 +9,9 @@ import { LoginPage } from '../pages/login/login';
 import { SignupPage } from '../pages/signup/signup';
 import { ConfirmPage } from '../pages/confirm/confirm';
 import { HomePage } from '../pages/home/home';
+import { SettingsPage } from '../pages/settings/settings';
+import { AboutPage } from '../pages/about/about';
+import { TabsPage } from '../pages/tabs/tabs';
 import { TasksPage } from '../pages/tasks/tasks';
 import { TasksCreatePage } from '../pages/tasks-create/tasks-create';
 
@@ -26,10 +31,14 @@ import { MobileAnalytics } from '../providers/aws.analytics';
     SignupPage,
     ConfirmPage,
     HomePage,
+    SettingsPage,
+    AboutPage,
+    TabsPage,
     TasksPage,
     TasksCreatePage
   ],
   imports: [
+    BrowserModule,
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
@@ -39,6 +48,9 @@ import { MobileAnalytics } from '../providers/aws.analytics';
     SignupPage,
     ConfirmPage,
     HomePage,
+    SettingsPage,
+    AboutPage,
+    TabsPage,
     TasksPage,
     TasksCreatePage
   ],

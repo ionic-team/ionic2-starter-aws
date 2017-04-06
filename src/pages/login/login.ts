@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 
-import { NavController } from 'ionic-angular';
+import { NavController, LoadingController } from 'ionic-angular';
 
-import { HomePage } from '../home/home';
+import { TabsPage } from '../tabs/tabs';
 import { SignupPage } from '../signup/signup';
 import { ConfirmPage } from '../confirm/confirm';
 
@@ -21,23 +21,34 @@ export class LoginPage {
   
   public loginDetails: LoginDetails;
 
-  constructor(public navCtrl: NavController, public user: User, public analytics: MobileAnalytics) {
+  constructor(public navCtrl: NavController,
+              public user: User,
+              public analytics: MobileAnalytics,
+              public loadingCtrl: LoadingController) {
     this.loginDetails = new LoginDetails(); 
   }
 
   login() {
+    let loading = this.loadingCtrl.create({
+      content: 'Please wait...'
+    });
+    loading.present();
+
     let details = this.loginDetails;
     console.log('login..');
     this.user.login(details.username, details.password).then((result) => {
       console.log('result:', result);
       this.analytics.track('userAuthenticated');
       this.analytics.flush();
-      this.navCtrl.setRoot(HomePage);
+      loading.dismiss();
+      this.navCtrl.setRoot(TabsPage);
     }).catch((err) => { 
       if (err.message === "User is not confirmed.") {
+        loading.dismiss();
         this.navCtrl.push(ConfirmPage, { 'username': details.username });
       }
       console.log('errrror', err);
+      loading.dismiss();
     });
   }
 

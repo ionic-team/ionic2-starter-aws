@@ -18,8 +18,4 @@ export class HomePage {
     this.tasksPage = TasksPage;
   }
 
-  logout() {
-    this.user.logout();
-    this.navCtrl.setRoot(LoginPage);
-  }
 }
