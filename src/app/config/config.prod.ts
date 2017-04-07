@@ -7,6 +7,9 @@ export const cfg = {
         "identityPoolId": "",
         "userPoolId": "",
         "userPoolClientId": ""
+      },
+      "s3": {
+        "bucket": ""
       }
     }
   }

@@ -37,10 +37,10 @@ export class TasksPage {
         ':userId': self.user.getUser().getUsername(),
       },
       'ScanIndexForward': false
-    }, function(err, data) {
+    }).promise().then((data) => {
+      this.items = data.Items;
+    }).catch((err) => {
       console.log(err);
-      console.log(data);          
-      self.items = data.Items;
     });
   }
 
@@ -86,13 +86,11 @@ export class TasksPage {
       'Key': {
         'id': task.id
       }
-    }, function(err, data) {
-      if (!err) {
-        console.log('delete idx: ', index);
-        self.items.splice(index, 1);
-      }
-      console.log(err);
-      console.log(data);          
+    }).promise().then((data) => {
+      console.log('remove item: ', index);
+      this.items.splice(index, 1);
+    }).catch((err) => {
+      console.log('there was an error', err);
     });
   }
 

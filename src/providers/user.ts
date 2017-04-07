@@ -16,7 +16,11 @@ export class User {
   }
 
   getUser() {
-    return this.cognito.getCurrentUser();
+    return this.user;
+  }
+
+  getUsername() {
+    return this.getUser().getUsername();
   }
 
   login(username, password) {
@@ -104,13 +108,30 @@ export class User {
   }
 
   isAuthenticated() {
+    var self = this;
     return new Promise((resolve, reject) => {
       let user = this.cognito.getCurrentUser();
       if (user != null) {
         user.getSession((err, session) => {
           if (err) {
+            console.log('rejected session');
             reject()
           } else {
+            console.log('accepted session');
+            let AWS = this.aws.getAWS();
+            var logins = {};
+            var loginKey = 'cognito-idp.' + 
+              config.aws.mobileHub.region + 
+              '.amazonaws.com/' + 
+              config.aws.mobileHub.cognito.userPoolId;
+            logins[loginKey] = session.getIdToken().getJwtToken();
+
+            AWS.config.credentials = new AWS.CognitoIdentityCredentials({
+              'IdentityPoolId': config.aws.mobileHub.cognito.identityPoolId,
+              'Logins': logins
+            });
+
+            self.user = user;
             resolve()
           } 
         });

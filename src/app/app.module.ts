@@ -11,6 +11,7 @@ import { ConfirmPage } from '../pages/confirm/confirm';
 import { HomePage } from '../pages/home/home';
 import { SettingsPage } from '../pages/settings/settings';
 import { AboutPage } from '../pages/about/about';
+import { AccountPage } from '../pages/account/account';
 import { TabsPage } from '../pages/tabs/tabs';
 import { TasksPage } from '../pages/tasks/tasks';
 import { TasksCreatePage } from '../pages/tasks-create/tasks-create';
@@ -33,6 +34,7 @@ import { MobileAnalytics } from '../providers/aws.analytics';
     HomePage,
     SettingsPage,
     AboutPage,
+    AccountPage,
     TabsPage,
     TasksPage,
     TasksCreatePage
@@ -50,6 +52,7 @@ import { MobileAnalytics } from '../providers/aws.analytics';
     HomePage,
     SettingsPage,
     AboutPage,
+    AccountPage,
     TabsPage,
     TasksPage,
     TasksCreatePage
