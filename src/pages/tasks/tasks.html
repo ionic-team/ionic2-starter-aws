@@ -12,7 +12,7 @@
 </ion-header>
 
 <ion-content>
-  <ion-refresher (ionRefresh)="refreshTasks()">
+  <ion-refresher (ionRefresh)="refreshData($event)">
     <ion-refresher-content
                   pullingIcon="arrow-dropdown"
                   pullingText="Pull to refresh"

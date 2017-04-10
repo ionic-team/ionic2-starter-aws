@@ -13,6 +13,7 @@ import { DynamoDB, MobileAnalytics, User } from '../../providers/providers';
 export class TasksPage {
 
   public items: any;
+  public refresher: any;
   private taskTable: string = 'swamidemo-mobilehub-2087048444-tasks';
 
   constructor(public navCtrl: NavController,
@@ -22,6 +23,11 @@ export class TasksPage {
               public db: DynamoDB) {
 
     this.refreshTasks();
+  }
+
+  refreshData(refresher) {
+    this.refresher = refresher;
+    this.refreshTasks()
   }
 
   refreshTasks() {
@@ -39,6 +45,9 @@ export class TasksPage {
       'ScanIndexForward': false
     }).promise().then((data) => {
       this.items = data.Items;
+      if (this.refresher) {
+        this.refresher.complete();
+      }
     }).catch((err) => {
       console.log(err);
     });
