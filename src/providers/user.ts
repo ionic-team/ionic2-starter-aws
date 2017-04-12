@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
+import { Config } from 'ionic-angular';
 
-import { config } from '../app/app.env';
 import { AWS } from './providers';
 import { Cognito } from './providers';
 
@@ -11,7 +11,7 @@ export class User {
   private user: any;
   public loggedIn: boolean = false;
 
-  constructor(public aws: AWS, public cognito: Cognito) {
+  constructor(public aws: AWS, public cognito: Cognito, public config: Config) {
     this.user = null;
   }
 
@@ -34,13 +34,13 @@ export class User {
         'onSuccess': function(result) {
           var logins = {};
           var loginKey = 'cognito-idp.' + 
-                          config.aws.mobileHub.region + 
+                          self.config.get('aws_cognito_region') + 
                           '.amazonaws.com/' + 
-                          config.aws.mobileHub.cognito.userPoolId;
+                          self.config.get('aws_user_pools_id');
           logins[loginKey] = result.getIdToken().getJwtToken();
 
           AWS.config.credentials = new AWS.CognitoIdentityCredentials({
-           'IdentityPoolId': config.aws.mobileHub.cognito.identityPoolId,
+           'IdentityPoolId': self.config.get('aws_cognito_identity_pool_id'),
            'Logins': logins
           });
 
@@ -121,13 +121,13 @@ export class User {
             let AWS = this.aws.getAWS();
             var logins = {};
             var loginKey = 'cognito-idp.' + 
-              config.aws.mobileHub.region + 
-              '.amazonaws.com/' + 
-              config.aws.mobileHub.cognito.userPoolId;
+              self.config.get('aws_cognito_region') +
+              '.amazonaws.com/' +
+              self.config.get('aws_user_pools_id');
             logins[loginKey] = session.getIdToken().getJwtToken();
 
             AWS.config.credentials = new AWS.CognitoIdentityCredentials({
-              'IdentityPoolId': config.aws.mobileHub.cognito.identityPoolId,
+              'IdentityPoolId': self.config.get('aws_cognito_identity_pool_id'),
               'Logins': logins
             });
 

@@ -1,16 +1,16 @@
 import { Injectable } from '@angular/core';
+import { Config } from 'ionic-angular';
 
 import AMA from 'aws-sdk-mobile-analytics';
-import { config } from '../app/app.env';
 
 @Injectable()
 export class MobileAnalytics {
 
   private manager: any;
 
-  constructor() {
+  constructor(public config: Config) {
     this.manager = new AMA.Manager({
-      'appId': config.aws.mobileHub.appId
+      'appId': config.get('aws_mobile_analytics_app_id')
     });
   }
 

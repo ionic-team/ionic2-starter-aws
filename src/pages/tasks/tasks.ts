@@ -14,7 +14,7 @@ export class TasksPage {
 
   public items: any;
   public refresher: any;
-  private taskTable: string = 'swamidemo-mobilehub-2087048444-tasks';
+  private taskTable: string = 'ionic-mobile-hub-starter-tasks';
 
   constructor(public navCtrl: NavController,
               public modalCtrl: ModalController,
@@ -80,9 +80,9 @@ export class TasksPage {
         }, function(err, data) {
           console.log(err);
           console.log(data);          
+          self.refreshTasks();
         });
         console.log('item is', item);
-        self.refreshTasks();
       }
     })
     addModal.present();

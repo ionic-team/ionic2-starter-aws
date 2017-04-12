@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 
 import { AWS } from '../providers/aws';
-import { config } from '../app/app.env';
 
 @Injectable()
 export class DynamoDB {

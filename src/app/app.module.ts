@@ -1,9 +1,9 @@
-import { APP_INITIALIZER, NgModule, ErrorHandler } from '@angular/core';
+import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 
 
-import { Config } from './app.config';
+import { AwsConfig } from './app.config';
 import { MyApp } from './app.component';
 import { LoginPage } from '../pages/login/login';
 import { SignupPage } from '../pages/signup/signup';
@@ -41,7 +41,7 @@ import { MobileAnalytics } from '../providers/aws.analytics';
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp, new AwsConfig().load())
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -58,11 +58,9 @@ import { MobileAnalytics } from '../providers/aws.analytics';
     TasksCreatePage
   ],
   providers: [
-    Config,
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    {provide: APP_INITIALIZER, useFactory: (config: Config) => () => config.load(), deps: [Config], multi: true },
     User,
     AWS,
     Cognito,

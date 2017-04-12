@@ -1,20 +1,21 @@
 import { Injectable } from '@angular/core';
+import { Config } from 'ionic-angular';
 import * as AWSCognito from 'amazon-cognito-identity-js';
 
 import { AWS } from '../providers/providers';
-import { config } from '../app/app.env';
 
 @Injectable()
 export class Cognito {
 
-  constructor() {
+  constructor(public config: Config) {
 
   }
 
   getUserPool() {
+    let self = this;
     return new AWSCognito.CognitoUserPool({
-      "UserPoolId": config.aws.mobileHub.cognito.userPoolId,
-      "ClientId": config.aws.mobileHub.cognito.userPoolClientId
+      "UserPoolId": self.config.get('aws_user_pools_id'),
+      "ClientId": self.config.get('aws_user_pools_client_id')
     });
   }
 
