@@ -11,30 +11,27 @@ To use this template, either create a new ionic project using the ionic node.js 
 Take the name after `ionic2-starter-`, and that is the name of the template to be used when using the `ionic start` command below:
 
 ```bash
-$ sudo npm install -g ionic cordova
 $ ionic start awsMobile aws --v2
 ```
-
-Then, to run it, cd into `myBlank` and run:
-
-```bash
-$ ionic platform add ios
-$ ionic run ios
-```
-
-Substitute ios for android if not on a Mac.
 
 ### Additional Dependencies
 
 ```bash
 $ npm install --save aws-sdk
-$ npm install --save aws-sdk-mobile-analytics
 $ npm install --save amazon-cognito-identity-js
 $ npm install --save @types/node
 ```
 
-### Configuration
+### Import project to Mobile Hub
 
-This starter allows you to setup multiple configurations (e.g. development vs production). The config that is loaded is determined by the file you choose to import into the `src/app/app.env.ts` file.
+Go to Mobile Hub and select "import project". Supply the `mobile-hub-project.zip` and name the project whatever you would like.
 
-Configs live within the `src/app/config` directory. The development configuration is loaded by default.
+### Grab the configuration
+
+Within the Content Delivery S3 bucket you will find an `aws-config.js` file. Copy the contents of this file to `app.config.ts` within the 
+
+```javascript
+// --- BEGIN MOBILE HUB CONFIG ---
+
+// --- END MOBILE HUB CONFIG ---
+```
