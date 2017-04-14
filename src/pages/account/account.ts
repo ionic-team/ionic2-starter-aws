@@ -28,9 +28,16 @@ export class AccountPage {
       'region': config.get('aws_user_files_s3_bucket_region')
     });
     this.sub = (this.aws.getAWS().config.credentials as any).identityId;
-    this.avatarPhoto = this.s3.getSignedUrl('getObject', {'Key': 'protected/' + self.sub + '/avatar'});
     user.getUser().getUserAttributes(function(err, data) {
       self.attributes = data;
+      self.refreshAvatar();
+    });
+  }
+
+  refreshAvatar() {
+    let self = this;
+    this.s3.getSignedUrl('getObject', {'Key': 'protected/' + self.sub + '/avatar'}, function(err, url) {
+      self.avatarPhoto = url;
     });
   }
 
@@ -46,7 +53,7 @@ export class AccountPage {
         'Body': self.avatarInput.nativeElement.files[0],
         'ContentType': self.avatarInput.nativeElement.files[0].type
       }).promise().then((data) => {
-        this.avatarPhoto = this.s3.getSignedUrl('getObject', {'Key': 'protected/' + self.sub + '/avatar'});
+        this.refreshAvatar();
         console.log('upload complete:', data);
       }).catch((err) => {
         console.log('upload failed....', err);
