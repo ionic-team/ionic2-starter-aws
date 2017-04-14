@@ -4,7 +4,7 @@ import { NavController } from 'ionic-angular';
 import { LoginPage } from '../login/login';
 import { TasksPage } from '../tasks/tasks';
 
-import { DynamoDB, MobileAnalytics, User } from '../../providers/providers';
+import { DynamoDB, User } from '../../providers/providers';
 
 @Component({
   selector: 'page-home',
@@ -14,7 +14,7 @@ export class HomePage {
 
   public tasksPage: any;
 
-  constructor(public navCtrl: NavController, public user: User, public analytics: MobileAnalytics, public db: DynamoDB) {
+  constructor(public navCtrl: NavController, public user: User, public db: DynamoDB) {
     this.tasksPage = TasksPage;
   }
 

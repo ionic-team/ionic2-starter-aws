@@ -44,8 +44,11 @@ export class User {
            'Logins': logins
           });
 
-          self.user = self.cognito.getUserPool().getCurrentUser();
-          resolve(result);
+          self.isAuthenticated().then(() => {
+            resolve();
+          }).catch((err) => {
+            console.log('auth session failed');
+          });
         },
 
         'onFailure': function(err) {

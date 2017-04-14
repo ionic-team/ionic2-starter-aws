@@ -4,7 +4,7 @@ import { NavController, ModalController } from 'ionic-angular';
 import { LoginPage } from '../login/login';
 import { TasksCreatePage } from '../tasks-create/tasks-create';
 
-import { DynamoDB, MobileAnalytics, User } from '../../providers/providers';
+import { DynamoDB, User } from '../../providers/providers';
 
 @Component({
   selector: 'page-tasks',
@@ -19,7 +19,6 @@ export class TasksPage {
   constructor(public navCtrl: NavController,
               public modalCtrl: ModalController,
               public user: User,
-              public analytics: MobileAnalytics,
               public db: DynamoDB) {
 
     this.refreshTasks();

@@ -6,7 +6,7 @@ import { TabsPage } from '../tabs/tabs';
 import { SignupPage } from '../signup/signup';
 import { ConfirmPage } from '../confirm/confirm';
 
-import { User, MobileAnalytics } from '../../providers/providers';
+import { User } from '../../providers/providers';
 
 export class LoginDetails {
   username: string;
@@ -23,7 +23,6 @@ export class LoginPage {
 
   constructor(public navCtrl: NavController,
               public user: User,
-              public analytics: MobileAnalytics,
               public loadingCtrl: LoadingController) {
     this.loginDetails = new LoginDetails(); 
   }
@@ -38,8 +37,6 @@ export class LoginPage {
     console.log('login..');
     this.user.login(details.username, details.password).then((result) => {
       console.log('result:', result);
-      this.analytics.track('userAuthenticated');
-      this.analytics.flush();
       loading.dismiss();
       this.navCtrl.setRoot(TabsPage);
     }).catch((err) => { 

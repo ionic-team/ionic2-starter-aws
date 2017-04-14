@@ -23,7 +23,6 @@ import { User } from '../providers/user';
 import { AWS } from '../providers/aws';
 import { Cognito } from '../providers/aws.cognito';
 import { DynamoDB } from '../providers/aws.dynamodb';
-import { MobileAnalytics } from '../providers/aws.analytics';
 
 @NgModule({
   declarations: [
@@ -64,8 +63,7 @@ import { MobileAnalytics } from '../providers/aws.analytics';
     User,
     AWS,
     Cognito,
-    DynamoDB,
-    MobileAnalytics
+    DynamoDB
   ]
 })
 export class AppModule {}

@@ -2,7 +2,6 @@
   "dependencies":{
     "@types/node": "^7.0.12",
     "amazon-cognito-identity-js": "^1.16.0",
-    "aws-sdk": "^2.36.0",
-    "aws-sdk-mobile-analytics": "^0.9.2"
+    "aws-sdk": "^2.36.0"
   }
 }
