@@ -28,7 +28,7 @@ Go to Mobile Hub and select "import project". Supply the `mobile-hub-project.zip
 
 ### Grab the configuration
 
-Within the Content Delivery S3 bucket you will find an `aws-config.js` file. Copy the contents of this file to `app.config.ts` within the 
+Within the Content Delivery S3 bucket you will find an `aws-config.js` file. Copy the contents of this file to `app.config.ts` within the following block:
 
 ```javascript
 // --- BEGIN MOBILE HUB CONFIG ---
