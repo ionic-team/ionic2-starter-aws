@@ -14,24 +14,3 @@ Take the name after `ionic2-starter-`, and that is the name of the template to b
 $ ionic start awsMobile aws --v2
 ```
 
-### Additional Dependencies
-
-```bash
-$ npm install --save aws-sdk
-$ npm install --save amazon-cognito-identity-js
-$ npm install --save @types/node
-```
-
-### Import project to Mobile Hub
-
-Go to Mobile Hub and select "import project". Supply the `mobile-hub-project.zip` and name the project whatever you would like.
-
-### Grab the configuration
-
-Within the Content Delivery S3 bucket you will find an `aws-config.js` file. Copy the contents of this file to `app.config.ts` within the following block:
-
-```javascript
-// --- BEGIN MOBILE HUB CONFIG ---
-
-// --- END MOBILE HUB CONFIG ---
-```

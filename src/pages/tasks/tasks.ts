@@ -6,6 +6,8 @@ import { TasksCreatePage } from '../tasks-create/tasks-create';
 
 import { DynamoDB, User } from '../../providers/providers';
 
+declare var AWS: any;
+
 @Component({
   selector: 'page-tasks',
   templateUrl: 'tasks.html'
@@ -14,7 +16,7 @@ export class TasksPage {
 
   public items: any;
   public refresher: any;
-  private taskTable: string = 'ionic-mobile-hub-starter-tasks';
+  private taskTable: string = 'ionic-mobile-hub-tasks';
 
   constructor(public navCtrl: NavController,
               public modalCtrl: ModalController,
@@ -33,13 +35,14 @@ export class TasksPage {
     var self = this;
     this.db.getDocumentClient().query({
       'TableName': self.taskTable,
-      'IndexName': 'userId-created',
+      'IndexName': 'DateSorted',
       'KeyConditionExpression': "#userId = :userId",
       'ExpressionAttributeNames': {
         '#userId': 'userId',
       },
       'ExpressionAttributeValues': {
-        ':userId': self.user.getUser().getUsername(),
+        //':userId': self.user.getUser().getUsername(),
+        ':userId': AWS.config.credentials.identityId
       },
       'ScanIndexForward': false
     }).promise().then((data) => {
@@ -70,18 +73,16 @@ export class TasksPage {
     let self = this;
     addModal.onDidDismiss(item => {
       if (item) {
-        item.userId = self.user.getUser().getUsername();
-        item.created = (new Date().getTime() / 1000).toString();
+        item.userId = AWS.config.credentials.identityId;
+        item.created = (new Date().getTime() / 1000);
         self.db.getDocumentClient().put({
           'TableName': self.taskTable,
           'Item': item,
           'ConditionExpression': 'attribute_not_exists(id)'
         }, function(err, data) {
-          console.log(err);
-          console.log(data);          
+          if (err) { console.log(err); }
           self.refreshTasks();
         });
-        console.log('item is', item);
       }
     })
     addModal.present();
@@ -92,10 +93,10 @@ export class TasksPage {
     this.db.getDocumentClient().delete({
       'TableName': self.taskTable,
       'Key': {
-        'id': task.id
+        'userId': AWS.config.credentials.identityId,
+        'taskId': task.taskId
       }
     }).promise().then((data) => {
-      console.log('remove item: ', index);
       this.items.splice(index, 1);
     }).catch((err) => {
       console.log('there was an error', err);

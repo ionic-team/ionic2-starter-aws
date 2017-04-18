@@ -20,7 +20,7 @@ export class TasksCreatePage {
               public platform: Platform) {
     this.isAndroid = platform.is('android');
     this.item = {
-      'id': navParams.get('id'),
+      'taskId': navParams.get('id'),
       'category': 'Todo'
     };
     this.isReadyToSave = true;
