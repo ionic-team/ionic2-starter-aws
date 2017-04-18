@@ -8,7 +8,6 @@ import { MyApp } from './app.component';
 import { LoginPage } from '../pages/login/login';
 import { SignupPage } from '../pages/signup/signup';
 import { ConfirmPage } from '../pages/confirm/confirm';
-import { HomePage } from '../pages/home/home';
 import { SettingsPage } from '../pages/settings/settings';
 import { AboutPage } from '../pages/about/about';
 import { AccountPage } from '../pages/account/account';
@@ -29,7 +28,6 @@ import { DynamoDB } from '../providers/aws.dynamodb';
     LoginPage,
     SignupPage,
     ConfirmPage,
-    HomePage,
     SettingsPage,
     AboutPage,
     AccountPage,
@@ -47,7 +45,6 @@ import { DynamoDB } from '../providers/aws.dynamodb';
     LoginPage,
     SignupPage,
     ConfirmPage,
-    HomePage,
     SettingsPage,
     AboutPage,
     AccountPage,
