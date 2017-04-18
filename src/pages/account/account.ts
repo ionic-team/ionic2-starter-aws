@@ -2,7 +2,9 @@ import { Component, ViewChild } from '@angular/core';
 
 import { Config, NavController } from 'ionic-angular';
 
-import { AWS, DynamoDB, User } from '../../providers/providers';
+import { DynamoDB, User } from '../../providers/providers';
+
+declare var AWS: any;
 
 @Component({
   selector: 'page-account',
@@ -17,9 +19,8 @@ export class AccountPage {
   public attributes: any;
   public sub: string = null;
 
-  constructor(public navCtrl: NavController, public aws: AWS, public user: User, public db: DynamoDB, public config: Config) {
+  constructor(public navCtrl: NavController, public user: User, public db: DynamoDB, public config: Config) {
     let self = this;
-    let AWS = aws.getAWS();
     this.attributes = [];
     this.s3 = new AWS.S3({
       'params': {
@@ -27,7 +28,7 @@ export class AccountPage {
       },
       'region': config.get('aws_user_files_s3_bucket_region')
     });
-    this.sub = (this.aws.getAWS().config.credentials as any).identityId;
+    this.sub = AWS.config.credentials.identityId;
     user.getUser().getUserAttributes(function(err, data) {
       self.attributes = data;
       self.refreshAvatar();

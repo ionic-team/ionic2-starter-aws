@@ -7,7 +7,6 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { LoginPage } from '../pages/login/login';
 
 import { User } from '../providers/user';
-import { AWS } from '../providers/aws';
 
 
 @Component({
@@ -16,7 +15,7 @@ import { AWS } from '../providers/aws';
 export class MyApp {
   rootPage:any = null;
 
-  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, user: User, public aws: AWS, public config: Config) {
+  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, user: User, public config: Config) {
     let globalActions = function() {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
@@ -25,7 +24,6 @@ export class MyApp {
     };
 
     platform.ready().then(() => {
-      aws.getAWS();
       user.isAuthenticated().then(() => {
         console.log('you are authenticated!');
         this.rootPage = TabsPage;

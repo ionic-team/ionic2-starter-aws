@@ -20,7 +20,6 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { User } from '../providers/user';
-import { AWS } from '../providers/aws';
 import { Cognito } from '../providers/aws.cognito';
 import { DynamoDB } from '../providers/aws.dynamodb';
 
@@ -61,7 +60,6 @@ import { DynamoDB } from '../providers/aws.dynamodb';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     User,
-    AWS,
     Cognito,
     DynamoDB
   ]

@@ -1,14 +1,13 @@
 import { Injectable } from '@angular/core';
 
-import { AWS } from '../providers/aws';
+declare var AWS: any;
 
 @Injectable()
 export class DynamoDB {
 
   private documentClient: any;
 
-  constructor(public aws: AWS) {
-    let AWS = aws.getAWS();
+  constructor() {
     this.documentClient = new AWS.DynamoDB.DocumentClient();
   }
 

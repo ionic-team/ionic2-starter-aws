@@ -61,7 +61,7 @@ export class TasksPage {
     for(var i = 0; i < len; i++) {
       result += chars[randoms[i] % charLength];
     }
-    return result;
+    return result.toLowerCase();
   }
 
   addTask() {

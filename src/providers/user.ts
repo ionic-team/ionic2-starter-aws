@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Config } from 'ionic-angular';
 
-import { AWS } from './providers';
 import { Cognito } from './providers';
 
+declare var AWS: any;
 
 @Injectable()
 export class User {
@@ -11,7 +11,7 @@ export class User {
   private user: any;
   public loggedIn: boolean = false;
 
-  constructor(public aws: AWS, public cognito: Cognito, public config: Config) {
+  constructor(public cognito: Cognito, public config: Config) {
     this.user = null;
   }
 
@@ -28,7 +28,6 @@ export class User {
       let self = this;
       let user = this.cognito.makeUser(username);
       let authDetails = this.cognito.makeAuthDetails(username, password);
-      let AWS = this.aws.getAWS();
 
       user.authenticateUser(authDetails, {
         'onSuccess': function(result) {
@@ -121,7 +120,6 @@ export class User {
             reject()
           } else {
             console.log('accepted session');
-            let AWS = this.aws.getAWS();
             var logins = {};
             var loginKey = 'cognito-idp.' + 
               self.config.get('aws_cognito_region') +

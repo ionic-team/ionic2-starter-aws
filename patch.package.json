@@ -1,7 +1,0 @@
-{
-  "dependencies":{
-    "@types/node": "^7.0.12",
-    "amazon-cognito-identity-js": "^1.16.0",
-    "aws-sdk": "git://git@github.com:aws/aws-sdk-js.git#da5e7b230911fea1aaab45cd7edcb8deeffa165e"
-  }
-}
