@@ -2,6 +2,7 @@ import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 
+import { Camera } from '@ionic-native/camera';
 
 import { AwsConfig } from './app.config';
 import { MyApp } from './app.component';
@@ -56,6 +57,7 @@ import { DynamoDB } from '../providers/aws.dynamodb';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
+    Camera,
     User,
     Cognito,
     DynamoDB

@@ -9,7 +9,7 @@
 <ion-content padding>
 
   <div padding text-center>
-    <div class="avatar" [style.background-image]="'url('+ avatarPhoto +')'">
+    <div *ngIf="avatarPhoto" class="avatar" [style.background-image]="'url('+ avatarPhoto +')'">
     </div>
 
     <button ion-button clear (click)="selectAvatar()">Change photo</button>
