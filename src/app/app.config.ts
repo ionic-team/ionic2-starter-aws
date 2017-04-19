@@ -18,7 +18,7 @@ export class AwsConfig {
       "aws_cognito_region": aws_cognito_region,
       "aws_cognito_identity_pool_id": aws_cognito_identity_pool_id,
       "aws_user_pools_id": aws_user_pools_id,
-      "aws_user_pools_client_id": aws_user_pools_client_id,
+      "aws_user_pools_web_client_id": aws_user_pools_web_client_id,
       "aws_user_files_s3_bucket": aws_user_files_s3_bucket
     };
 
