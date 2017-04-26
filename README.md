@@ -1,4 +1,4 @@
-This is a starter template for [Ionic 2](http://ionicframework.com/docs/v2/) projects.
+This is a starter template for [Ionic](http://ionicframework.com/docs/v2/) projects.
 
 ## How to use this template
 
@@ -11,6 +11,6 @@ To use this template, either create a new ionic project using the ionic node.js 
 Take the name after `ionic2-starter-`, and that is the name of the template to be used when using the `ionic start` command below:
 
 ```bash
-$ ionic start awsMobile aws --v2
+$ ionic start awsMobile aws
 ```
 
