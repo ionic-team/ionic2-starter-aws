@@ -3,6 +3,7 @@
     <img src="assets/ionic-aws-logo.png" />
   </div>
   <form (submit)="signup()">
+    <p *ngIf="error" style="text-align: center">{{error.message}}</p>
     <ion-list>
 
       <ion-item>
@@ -30,4 +31,4 @@
 
     </ion-list>
   </form>
-</ion-content>  
+</ion-content>

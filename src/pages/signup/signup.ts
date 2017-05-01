@@ -21,6 +21,8 @@ export class SignupPage {
 
   public userDetails: UserDetails;
 
+  error: any;
+
   constructor(public navCtrl: NavController,
               public user: User,
               public loadingCtrl: LoadingController) {
@@ -35,6 +37,7 @@ export class SignupPage {
     loading.present();
 
     let details = this.userDetails;
+    this.error = null;
     console.log('register');
     this.user.register(details.username, details.password, {'email': details.email}).then((user) => {
       console.log('hooray', user);
@@ -42,8 +45,8 @@ export class SignupPage {
       this.navCtrl.push(ConfirmPage, { username: details.username });
     }).catch((err) => {
       loading.dismiss();
-      console.log('uh-oh', err);
-    }); 
+      this.error = err;
+    });
   }
 
   login() {
