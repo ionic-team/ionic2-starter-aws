@@ -85,3 +85,14 @@ Or open the platform-specific project in the relevant IDE:
 ```bash
 open platforms/ios/MyApp.xcodeproj
 ```
+
+### Hosting app on Amazon S3
+
+Since your Ionic app is just a web app, it can be hosted as a static website in an Amazon S3 bucket. To do this, copy the web assets to the S3 bucket:
+
+```
+npm run build
+aws s3 cp --recursive ./www s3://WEBSITE_BUCKET
+```
+
+Where `WEBSITE_BUCKET` is an S3 bucket configured with static hosting.
