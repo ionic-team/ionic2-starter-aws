@@ -1,16 +1,17 @@
-This is a starter template for [Ionic](http://ionicframework.com/docs/v2/) projects.
+# Ionic AWS Starter
 
-## How to use this template
+This Ionic starter comes with a pre-configured AWS Mobile Hub project set up to use Amazon DynamoDB, S3, Pinpoint, and Cognito.
 
-*This template does not work on its own*. The shared files for each starter are found in the [ionic2-app-base repo](https://github.com/driftyco/ionic2-app-base).
+## Using the Starter
 
-To use this template, either create a new ionic project using the ionic node.js utility, or copy the files from this repository into the [Starter App Base](https://github.com/driftyco/ionic2-app-base).
+### Installing Ionic CLI 3.0
 
-### With the Ionic CLI:
-
-Take the name after `ionic2-starter-`, and that is the name of the template to be used when using the `ionic start` command below:
+This starter project requires Ionic CLI 3.0, to install, run
 
 ```bash
-$ ionic start awsMobile aws
+npm install -g ionic@next
 ```
 
+Make sure to add `sudo` on Mac and Linux. If you encounter issues installing the Ionic 3 CLI, uninstall the old one using `npm uninstall -g ionic` first.
+
+### Creating AWS Mobile Hub Project
