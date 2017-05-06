@@ -6,35 +6,35 @@ import { Camera } from '@ionic-native/camera';
 
 import { AwsConfig } from './app.config';
 import { MyApp } from './app.component';
-import { LoginPage } from '../pages/login/login';
-import { SignupPage } from '../pages/signup/signup';
-import { ConfirmPage } from '../pages/confirm/confirm';
-import { SettingsPage } from '../pages/settings/settings';
 import { AboutPage } from '../pages/about/about';
 import { AccountPage } from '../pages/account/account';
+import { ConfirmPage } from '../pages/confirm/confirm';
+import { LoginPage } from '../pages/login/login';
+import { SettingsPage } from '../pages/settings/settings';
+import { SignupPage } from '../pages/signup/signup';
 import { TabsPage } from '../pages/tabs/tabs';
-import { TasksPage } from '../pages/tasks/tasks';
 import { TasksCreatePage } from '../pages/tasks-create/tasks-create';
+import { TasksPage } from '../pages/tasks/tasks';
 
-import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { StatusBar } from '@ionic-native/status-bar';
 
-import { User } from '../providers/user';
 import { Cognito } from '../providers/aws.cognito';
 import { DynamoDB } from '../providers/aws.dynamodb';
+import { User } from '../providers/user';
 
 @NgModule({
   declarations: [
     MyApp,
-    LoginPage,
-    SignupPage,
-    ConfirmPage,
-    SettingsPage,
     AboutPage,
     AccountPage,
+    ConfirmPage,
+    LoginPage,
+    SettingsPage,
+    SignupPage,
     TabsPage,
-    TasksPage,
-    TasksCreatePage
+    TasksCreatePage,
+    TasksPage
   ],
   imports: [
     BrowserModule,
@@ -43,24 +43,24 @@ import { DynamoDB } from '../providers/aws.dynamodb';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    LoginPage,
-    SignupPage,
-    ConfirmPage,
-    SettingsPage,
     AboutPage,
     AccountPage,
+    ConfirmPage,
+    LoginPage,
+    SettingsPage,
+    SignupPage,
     TabsPage,
-    TasksPage,
-    TasksCreatePage
+    TasksCreatePage,
+    TasksPage
   ],
   providers: [
-    StatusBar,
-    SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler},
     Camera,
-    User,
+    SplashScreen,
+    StatusBar,
+    { provide: ErrorHandler, useClass: IonicErrorHandler },
     Cognito,
-    DynamoDB
+    DynamoDB,
+    User
   ]
 })
-export class AppModule {}
+export class AppModule { }

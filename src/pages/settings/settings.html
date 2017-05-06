@@ -7,15 +7,15 @@
 </ion-header>
 
 <ion-content>
-    <ion-list>
-      <button ion-item [navPush]="aboutPage">
+  <ion-list>
+    <button ion-item [navPush]="aboutPage">
         About this app
       </button>
-      <button ion-item [navPush]="accountPage">
+    <button ion-item [navPush]="accountPage">
         Account
       </button>
-      <button ion-item (click)="logout()">
+    <button ion-item (click)="logout()">
         <ion-label color="danger">Logout</ion-label>
       </button>
-    </ion-list>
+  </ion-list>
 </ion-content>

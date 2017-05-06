@@ -32,15 +32,15 @@ export class User {
       user.authenticateUser(authDetails, {
         'onSuccess': function(result) {
           var logins = {};
-          var loginKey = 'cognito-idp.' + 
-                          self.config.get('aws_cognito_region') + 
-                          '.amazonaws.com/' + 
-                          self.config.get('aws_user_pools_id');
+          var loginKey = 'cognito-idp.' +
+            self.config.get('aws_cognito_region') +
+            '.amazonaws.com/' +
+            self.config.get('aws_user_pools_id');
           logins[loginKey] = result.getIdToken().getJwtToken();
 
           AWS.config.credentials = new AWS.CognitoIdentityCredentials({
-           'IdentityPoolId': self.config.get('aws_cognito_identity_pool_id'),
-           'Logins': logins
+            'IdentityPoolId': self.config.get('aws_cognito_identity_pool_id'),
+            'Logins': logins
           });
 
           self.isAuthenticated().then(() => {
@@ -69,10 +69,10 @@ export class User {
     for (var x in attr) {
       attributes.push(this.cognito.makeAttribute(x, attr[x]));
     }
-    
+
     return new Promise((resolve, reject) => {
       this.cognito.getUserPool().signUp(username, password, attributes, null, function(err, result) {
-        if (err) { 
+        if (err) {
           reject(err);
         } else {
           resolve(result.user);
@@ -80,18 +80,18 @@ export class User {
       });
     });
   }
-  
+
   confirmRegistration(username, code) {
     return new Promise((resolve, reject) => {
       let user = this.cognito.makeUser(username);
       user.confirmRegistration(code, true, (err, result) => {
-            if (err) {
-              console.log('could not confirm user', err);
-              reject(err);
-            } else {
-              resolve(result);
-            }
-        });
+        if (err) {
+          console.log('could not confirm user', err);
+          reject(err);
+        } else {
+          resolve(result);
+        }
+      });
     });
   }
 
@@ -104,7 +104,7 @@ export class User {
           reject(err);
         } else {
           resolve();
-        } 
+        }
       });
     });
   }
@@ -121,7 +121,7 @@ export class User {
           } else {
             console.log('accepted session');
             var logins = {};
-            var loginKey = 'cognito-idp.' + 
+            var loginKey = 'cognito-idp.' +
               self.config.get('aws_cognito_region') +
               '.amazonaws.com/' +
               self.config.get('aws_user_pools_id');
@@ -134,7 +134,7 @@ export class User {
 
             self.user = user;
             resolve()
-          } 
+          }
         });
       } else {
         reject()

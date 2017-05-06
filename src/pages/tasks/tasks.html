@@ -1,7 +1,7 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Tasks 
+      Tasks
     </ion-title>
     <ion-buttons end>
       <button ion-button icon-only (click)="addTask()">
@@ -13,25 +13,20 @@
 
 <ion-content>
   <ion-refresher (ionRefresh)="refreshData($event)">
-    <ion-refresher-content
-                  pullingIcon="arrow-dropdown"
-                  pullingText="Pull to refresh"
-                  refreshingSpinner="circles"
-                  refreshingText="Refreshing...">
+    <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="Pull to refresh" refreshingSpinner="circles" refreshingText="Refreshing...">
     </ion-refresher-content>
   </ion-refresher>
 
-    <ion-list>
-      <ion-item-sliding *ngFor="let item of items; let idx = index;">
-        <button ion-item>
+  <ion-list>
+    <ion-item-sliding *ngFor="let item of items; let idx = index;">
+      <button ion-item>
           <h2>{{item.category}}</h2>
           <p>{{item.description}}</p>
         </button>
 
-        <ion-item-options>
-          <button ion-button color="danger" (click)="deleteTask(item, idx)">DELETE</button>
-        </ion-item-options>
-      </ion-item-sliding>
-    </ion-list>
+      <ion-item-options>
+        <button ion-button color="danger" (click)="deleteTask(item, idx)">DELETE</button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
 </ion-content>
-
