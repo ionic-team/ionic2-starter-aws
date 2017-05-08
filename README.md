@@ -76,8 +76,8 @@ ionic serve
 To run the app on device, first add a platform, and then run it:
 
 ```bash
-ionic platform add ios
-ionic run ios
+ionic cordova platform add ios
+ionic cordova run ios
 ```
 
 Or open the platform-specific project in the relevant IDE:
