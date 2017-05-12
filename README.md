@@ -9,7 +9,7 @@ This Ionic starter comes with a pre-configured [AWS Mobile Hub](https://aws.amaz
 This starter project requires Ionic CLI 3.0, to install, run
 
 ```bash
-npm install -g ionic@next
+npm install -g ionic@latest
 ```
 
 Make sure to add `sudo` on Mac and Linux. If you encounter issues installing the Ionic 3 CLI, uninstall the old one using `npm uninstall -g ionic` first.
