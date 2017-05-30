@@ -15,7 +15,7 @@ import { User } from '../providers/user';
 export class MyApp {
   rootPage: any = null;
 
-  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, user: User, public config: Config) {
+  constructor(private platform: Platform, private statusBar: StatusBar, private splashScreen: SplashScreen, private user: User, private config: Config) {
     let globalActions = function() {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
@@ -25,8 +25,8 @@ export class MyApp {
   }
 
   ionViewDidLoad() {
-    platform.ready().then(() => {
-      user.isAuthenticated().then(() => {
+    this.platform.ready().then(() => {
+      this.user.isAuthenticated().then(() => {
         console.log('you are authenticated!');
         this.rootPage = TabsPage;
         globalActions();
