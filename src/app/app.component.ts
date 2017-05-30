@@ -15,16 +15,19 @@ import { User } from '../providers/user';
 export class MyApp {
   rootPage: any = null;
 
-  constructor(private platform: Platform, private statusBar: StatusBar, private splashScreen: SplashScreen, private user: User, private config: Config) {
+  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, public user: User, public config: Config) {
+
+  }
+
+  ionViewDidLoad() {
+
     let globalActions = function() {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       statusBar.styleDefault();
       splashScreen.hide();
     };
-  }
 
-  ionViewDidLoad() {
     this.platform.ready().then(() => {
       this.user.isAuthenticated().then(() => {
         console.log('you are authenticated!');
