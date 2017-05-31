@@ -1,10 +1,7 @@
 import { Component } from '@angular/core';
 
-import { NavController, LoadingController } from 'ionic-angular';
+import {IonicPage, NavController, LoadingController } from 'ionic-angular';
 
-import { TabsPage } from '../tabs/tabs';
-import { SignupPage } from '../signup/signup';
-import { ConfirmPage } from '../confirm/confirm';
 
 import { User } from '../../providers/providers';
 
@@ -13,6 +10,7 @@ export class LoginDetails {
   password: string;
 }
 
+@IonicPage()
 @Component({
   selector: 'page-login',
   templateUrl: 'login.html'
@@ -38,11 +36,11 @@ export class LoginPage {
     this.user.login(details.username, details.password).then((result) => {
       console.log('result:', result);
       loading.dismiss();
-      this.navCtrl.setRoot(TabsPage);
+      this.navCtrl.setRoot('TabsPage');
     }).catch((err) => { 
       if (err.message === "User is not confirmed.") {
         loading.dismiss();
-        this.navCtrl.push(ConfirmPage, { 'username': details.username });
+        this.navCtrl.push('ConfirmPage', { 'username': details.username });
       }
       console.log('errrror', err);
       loading.dismiss();
@@ -50,7 +48,7 @@ export class LoginPage {
   }
 
   signup() {
-    this.navCtrl.push(SignupPage);
+    this.navCtrl.push('SignupPage');
   }
 
 }

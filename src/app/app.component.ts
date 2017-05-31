@@ -3,9 +3,6 @@ import { Config, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
-import { TabsPage } from '../pages/tabs/tabs';
-import { LoginPage } from '../pages/login/login';
-
 import { User } from '../providers/user';
 
 
@@ -26,11 +23,11 @@ export class MyApp {
     platform.ready().then(() => {
       user.isAuthenticated().then(() => {
         console.log('you are authenticated!');
-        this.rootPage = TabsPage;
+        this.rootPage = 'TabsPage';
         globalActions();
       }).catch(() => {
         console.log('you are not authenticated..'); 
-        this.rootPage = LoginPage;
+        this.rootPage = 'LoginPage';
         globalActions();
       });
     });
