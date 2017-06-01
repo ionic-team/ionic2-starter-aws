@@ -1,6 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 
-import { Config, LoadingController, NavController } from 'ionic-angular';
+import { IonicPage, Config, LoadingController, NavController } from 'ionic-angular';
 
 import { Camera, CameraOptions } from '@ionic-native/camera';
 
@@ -8,12 +8,13 @@ import { DynamoDB, User } from '../../providers/providers';
 
 declare var AWS: any;
 
+@IonicPage()
 @Component({
   selector: 'page-account',
   templateUrl: 'account.html'
 })
 export class AccountPage {
-  
+
   @ViewChild('avatar') avatarInput;
 
   private s3: any;
@@ -104,6 +105,6 @@ export class AccountPage {
       });
     }
     loading.dismiss();
-      
+
   }
 }

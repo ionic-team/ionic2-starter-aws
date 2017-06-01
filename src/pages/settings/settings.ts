@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
-import { App } from 'ionic-angular';
+import { IonicPage, App } from 'ionic-angular';
 import { LoginPage } from '../login/login';
 import { AboutPage } from '../about/about';
 import { AccountPage } from '../account/account';
 
 import { User } from '../../providers/providers';
 
+@IonicPage()
 @Component({
   templateUrl: 'settings.html'
 })

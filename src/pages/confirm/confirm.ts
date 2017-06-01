@@ -1,16 +1,17 @@
 import { Component } from '@angular/core';
 
-import { NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 import { LoginPage } from '../login/login';
 import { User } from '../../providers/user';
 
+@IonicPage()
 @Component({
   selector: 'page-confirm',
   templateUrl: 'confirm.html'
 })
 export class ConfirmPage {
-  
+
   public code: string;
   public username: string;
 
