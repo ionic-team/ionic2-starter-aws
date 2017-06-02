@@ -55,7 +55,7 @@ Visit the [AWS Mobile Hub](https://aws.amazon.com/mobile/) and enter the Mobile 
 In the Mobile Hub dashboard, click the "Import your project" button. Next, find the `mobile-hub-project.zip` included
 in this starter project, and drag and drop it to the import modal. Set the name of the project, and then click "Import project."
 
-Once the project is imported, you'll be directed to the dashboard for this Mobile Hub project. To continue configuring the app, you'll need to find the name of the Amazon S3 bucket auto generated through the App Content Delivery system. To do this, click the "Resources" button on the left side of the Mobile Hub project dashboard, find the "Amazon S3 Buckets" card, and then copy the bucket name that contains `contentdelivery`.
+Once the project is imported, you'll be directed to the dashboard for this Mobile Hub project. To continue configuring the app, you'll need to find the name of the Amazon S3 bucket auto generated through the App Content Delivery system. To do this, click the "Resources" button on the left side of the Mobile Hub project dashboard, find the "Amazon S3 Buckets" card, and then copy the bucket name that contains `hosting`.
 
 Next, assuming your terminal is still open inside of the `myApp` folder, run:
 
