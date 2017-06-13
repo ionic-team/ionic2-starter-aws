@@ -16,10 +16,9 @@ export class Cognito {
   }
 
   getUserPool() {
-    let self = this;
     return new AWSCognito.CognitoIdentityServiceProvider.CognitoUserPool({
-      "UserPoolId": self.config.get('aws_user_pools_id'),
-      "ClientId": self.config.get('aws_user_pools_web_client_id')
+      "UserPoolId": (window as any).aws_user_pools_id,
+      "ClientId": (window as any).aws_user_pools_web_client_id
     });
   }
 
