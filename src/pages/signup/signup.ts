@@ -1,9 +1,6 @@
 import { Component } from '@angular/core';
 
-import { NavController, LoadingController } from 'ionic-angular';
-
-import { LoginPage } from '../login/login';
-import { ConfirmPage } from '../confirm/confirm';
+import {IonicPage, NavController, LoadingController } from 'ionic-angular';
 
 import { User } from '../../providers/user';
 
@@ -13,6 +10,7 @@ export class UserDetails {
     password: string;
 }
 
+@IonicPage()
 @Component({
   selector: 'page-signup',
   templateUrl: 'signup.html'
@@ -42,7 +40,7 @@ export class SignupPage {
     this.user.register(details.username, details.password, {'email': details.email}).then((user) => {
       console.log('hooray', user);
       loading.dismiss();
-      this.navCtrl.push(ConfirmPage, { username: details.username });
+      this.navCtrl.push('ConfirmPage', { username: details.username });
     }).catch((err) => {
       loading.dismiss();
       this.error = err;
@@ -50,7 +48,7 @@ export class SignupPage {
   }
 
   login() {
-    this.navCtrl.push(LoginPage);
+    this.navCtrl.push('LoginPage');
   }
 
 }

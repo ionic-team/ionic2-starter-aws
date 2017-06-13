@@ -5,22 +5,11 @@ import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { Camera } from '@ionic-native/camera';
 
 import { MyApp } from './app.component';
-import { LoginPage } from '../pages/login/login';
-import { SignupPage } from '../pages/signup/signup';
-import { ConfirmPage } from '../pages/confirm/confirm';
-import { SettingsPage } from '../pages/settings/settings';
-import { AboutPage } from '../pages/about/about';
-import { AccountPage } from '../pages/account/account';
-import { TabsPage } from '../pages/tabs/tabs';
-import { TasksPage } from '../pages/tasks/tasks';
-import { TasksCreatePage } from '../pages/tasks-create/tasks-create';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
-import { User } from '../providers/user';
-import { Cognito } from '../providers/aws.cognito';
-import { DynamoDB } from '../providers/aws.dynamodb';
+import { User, Cognito, DynamoDB } from '../providers/providers';
 
 declare var AWS: any;
 
@@ -29,15 +18,6 @@ AWS.config.customUserAgent = AWS.config.customUserAgent + ' Ionic';
 @NgModule({
   declarations: [
     MyApp,
-    LoginPage,
-    SignupPage,
-    ConfirmPage,
-    SettingsPage,
-    AboutPage,
-    AccountPage,
-    TabsPage,
-    TasksPage,
-    TasksCreatePage
   ],
   imports: [
     BrowserModule,
@@ -46,15 +26,6 @@ AWS.config.customUserAgent = AWS.config.customUserAgent + ' Ionic';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    LoginPage,
-    SignupPage,
-    ConfirmPage,
-    SettingsPage,
-    AboutPage,
-    AccountPage,
-    TabsPage,
-    TasksPage,
-    TasksCreatePage
   ],
   providers: [
     StatusBar,
