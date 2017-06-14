@@ -4,7 +4,6 @@ import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 
 import { Camera } from '@ionic-native/camera';
 
-import { AwsConfig } from './app.config';
 import { MyApp } from './app.component';
 import { LoginPage } from '../pages/login/login';
 import { SignupPage } from '../pages/signup/signup';
@@ -23,6 +22,7 @@ import { User } from '../providers/user';
 import { Cognito } from '../providers/aws.cognito';
 import { DynamoDB } from '../providers/aws.dynamodb';
 
+
 @NgModule({
   declarations: [
     MyApp,
@@ -38,7 +38,7 @@ import { DynamoDB } from '../providers/aws.dynamodb';
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp, new AwsConfig().load())
+    IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -64,3 +64,6 @@ import { DynamoDB } from '../providers/aws.dynamodb';
   ]
 })
 export class AppModule {}
+
+declare var AWS;
+AWS.config.customUserAgent = AWS.config.customUserAgent + ' Ionic';
