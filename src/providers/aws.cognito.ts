@@ -4,22 +4,26 @@ import { Config } from 'ionic-angular';
 declare var AWS: any;
 declare var AWSCognito: any;
 
+declare const aws_cognito_region;
+declare const aws_cognito_identity_pool_id;
+declare const aws_user_pools_id;
+declare const aws_user_pools_web_client_id;
+
 @Injectable()
 export class Cognito {
 
   constructor(public config: Config) {
-    AWSCognito.config.region = config.get('aws_cognito_region');
+    AWSCognito.config.region = aws_cognito_region;
     AWSCognito.config.credentials = new AWS.CognitoIdentityCredentials({
-      IdentityPoolId: config.get('aws_cognito_identity_pool_id')
+      IdentityPoolId: aws_cognito_identity_pool_id
     });
     AWSCognito.config.update({ customUserAgent: AWS.config.customUserAgent });
   }
 
   getUserPool() {
-    let self = this;
     return new AWSCognito.CognitoIdentityServiceProvider.CognitoUserPool({
-      "UserPoolId": self.config.get('aws_user_pools_id'),
-      "ClientId": self.config.get('aws_user_pools_web_client_id')
+      "UserPoolId": aws_user_pools_id,
+      "ClientId": aws_user_pools_web_client_id
     });
   }
 

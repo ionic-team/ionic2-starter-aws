@@ -37,8 +37,7 @@ export class SignupPage {
     let details = this.userDetails;
     this.error = null;
     console.log('register');
-    this.user.register(details.username, details.password, { 'email': details.email }).then((user) => {
-      console.log('hooray', user);
+    this.user.register(details.username, details.password, {'email': details.email}).then((user) => {
       loading.dismiss();
       this.navCtrl.push(ConfirmPage, { username: details.username });
     }).catch((err) => {

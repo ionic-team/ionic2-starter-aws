@@ -4,6 +4,10 @@ import { Config } from 'ionic-angular';
 import { Cognito } from './providers';
 
 declare var AWS: any;
+declare const aws_cognito_region;
+declare const aws_cognito_identity_pool_id;
+declare const aws_user_pools_id;
+declare const aws_user_pools_web_client_id;
 
 @Injectable()
 export class User {
@@ -25,7 +29,6 @@ export class User {
 
   login(username, password) {
     return new Promise((resolve, reject) => {
-      let self = this;
       let user = this.cognito.makeUser(username);
       let authDetails = this.cognito.makeAuthDetails(username, password);
 
@@ -33,17 +36,17 @@ export class User {
         'onSuccess': function(result) {
           var logins = {};
           var loginKey = 'cognito-idp.' +
-            self.config.get('aws_cognito_region') +
-            '.amazonaws.com/' +
-            self.config.get('aws_user_pools_id');
+                          aws_cognito_region +
+                          '.amazonaws.com/' +
+                          aws_user_pools_id;
           logins[loginKey] = result.getIdToken().getJwtToken();
 
           AWS.config.credentials = new AWS.CognitoIdentityCredentials({
-            'IdentityPoolId': self.config.get('aws_cognito_identity_pool_id'),
-            'Logins': logins
+           'IdentityPoolId': aws_cognito_identity_pool_id,
+           'Logins': logins
           });
 
-          self.isAuthenticated().then(() => {
+          this.isAuthenticated().then(() => {
             resolve();
           }).catch((err) => {
             console.log('auth session failed');
@@ -110,7 +113,6 @@ export class User {
   }
 
   isAuthenticated() {
-    var self = this;
     return new Promise((resolve, reject) => {
       let user = this.cognito.getCurrentUser();
       if (user != null) {
@@ -122,17 +124,17 @@ export class User {
             console.log('accepted session');
             var logins = {};
             var loginKey = 'cognito-idp.' +
-              self.config.get('aws_cognito_region') +
+              aws_cognito_region +
               '.amazonaws.com/' +
-              self.config.get('aws_user_pools_id');
+              aws_user_pools_id;
             logins[loginKey] = session.getIdToken().getJwtToken();
 
             AWS.config.credentials = new AWS.CognitoIdentityCredentials({
-              'IdentityPoolId': self.config.get('aws_cognito_identity_pool_id'),
+              'IdentityPoolId': aws_cognito_identity_pool_id,
               'Logins': logins
             });
 
-            self.user = user;
+            this.user = user;
             resolve()
           }
         });

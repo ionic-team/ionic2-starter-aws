@@ -39,15 +39,15 @@ export class AccountPage {
       'region': config.get('aws_user_files_s3_bucket_region')
     });
     this.sub = AWS.config.credentials.identityId;
-    user.getUser().getUserAttributes(function(err, data) {
-      self.attributes = data;
-      self.refreshAvatar();
+    user.getUser().getUserAttributes((err, data) => {
+      this.attributes = data;
+      this.refreshAvatar();
     });
   }
 
   refreshAvatar() {
     let self = this;
-    this.s3.getSignedUrl('getObject', { 'Key': 'protected/' + self.sub + '/avatar' }, function(err, url) {
+    this.s3.getSignedUrl('getObject', {'Key': 'protected/' + self.sub + '/avatar'}, function(err, url) {
       self.avatarPhoto = url;
     });
   }
@@ -88,11 +88,10 @@ export class AccountPage {
   }
 
   upload(loading: any) {
-    let self = this;
-    if (self.selectedPhoto) {
+    if (this.selectedPhoto) {
       this.s3.upload({
-        'Key': 'protected/' + self.sub + '/avatar',
-        'Body': self.selectedPhoto,
+        'Key': 'protected/' + this.sub + '/avatar',
+        'Body': this.selectedPhoto,
         'ContentType': 'image/jpeg'
       }).promise().then((data) => {
         this.refreshAvatar();

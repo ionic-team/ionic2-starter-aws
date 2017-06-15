@@ -32,16 +32,14 @@ export class TasksPage {
   }
 
   refreshTasks() {
-    var self = this;
     this.db.getDocumentClient().query({
-      'TableName': self.taskTable,
+      'TableName': this.taskTable,
       'IndexName': 'DateSorted',
       'KeyConditionExpression': "#userId = :userId",
       'ExpressionAttributeNames': {
         '#userId': 'userId',
       },
       'ExpressionAttributeValues': {
-        //':userId': self.user.getUser().getUsername(),
         ':userId': AWS.config.credentials.identityId
       },
       'ScanIndexForward': false
@@ -70,18 +68,17 @@ export class TasksPage {
   addTask() {
     let id = this.generateId();
     let addModal = this.modalCtrl.create(TasksCreatePage, { 'id': id });
-    let self = this;
     addModal.onDidDismiss(item => {
       if (item) {
         item.userId = AWS.config.credentials.identityId;
         item.created = (new Date().getTime() / 1000);
-        self.db.getDocumentClient().put({
-          'TableName': self.taskTable,
+        this.db.getDocumentClient().put({
+          'TableName': this.taskTable,
           'Item': item,
           'ConditionExpression': 'attribute_not_exists(id)'
         }, function(err, data) {
           if (err) { console.log(err); }
-          self.refreshTasks();
+          this.refreshTasks();
         });
       }
     })
@@ -89,9 +86,8 @@ export class TasksPage {
   }
 
   deleteTask(task, index) {
-    let self = this;
     this.db.getDocumentClient().delete({
-      'TableName': self.taskTable,
+      'TableName': this.taskTable,
       'Key': {
         'userId': AWS.config.credentials.identityId,
         'taskId': task.taskId
