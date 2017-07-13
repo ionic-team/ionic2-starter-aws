@@ -17,7 +17,7 @@ export class Cognito {
     AWSCognito.config.credentials = new AWS.CognitoIdentityCredentials({
       IdentityPoolId: aws_cognito_identity_pool_id
     });
-    AWSCognito.config.update({customUserAgent: AWS.config.customUserAgent});
+    AWSCognito.config.update({ customUserAgent: AWS.config.customUserAgent });
   }
 
   getUserPool() {

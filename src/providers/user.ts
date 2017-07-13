@@ -88,13 +88,13 @@ export class User {
     return new Promise((resolve, reject) => {
       let user = this.cognito.makeUser(username);
       user.confirmRegistration(code, true, (err, result) => {
-            if (err) {
-              console.log('could not confirm user', err);
-              reject(err);
-            } else {
-              resolve(result);
-            }
-        });
+        if (err) {
+          console.log('could not confirm user', err);
+          reject(err);
+        } else {
+          resolve(result);
+        }
+      });
     });
   }
 

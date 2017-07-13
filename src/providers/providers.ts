@@ -3,7 +3,7 @@ import { DynamoDB } from './aws.dynamodb';
 import { User } from './user';
 
 export {
-  Cognito,
-  DynamoDB,
-  User
+Cognito,
+DynamoDB,
+User
 };

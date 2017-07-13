@@ -23,11 +23,12 @@ export class AccountPage {
   public sub: string = null;
 
   constructor(public navCtrl: NavController,
-              public user: User,
-              public db: DynamoDB,
-              public config: Config,
-              public camera: Camera,
-              public loadingCtrl: LoadingController) {
+    public user: User,
+    public db: DynamoDB,
+    public config: Config,
+    public camera: Camera,
+    public loadingCtrl: LoadingController) {
+    let self = this;
     this.attributes = [];
     this.avatarPhoto = null;
     this.selectedPhoto = null;
@@ -45,8 +46,9 @@ export class AccountPage {
   }
 
   refreshAvatar() {
-    this.s3.getSignedUrl('getObject', {'Key': 'protected/' + this.sub + '/avatar'}, (err, url) => {
-      this.avatarPhoto = url;
+    let self = this;
+    this.s3.getSignedUrl('getObject', {'Key': 'protected/' + self.sub + '/avatar'}, function(err, url) {
+      self.avatarPhoto = url;
     });
   }
 
@@ -57,7 +59,7 @@ export class AccountPage {
     for (let i = 0; i < binary.length; i++) {
       array.push(binary.charCodeAt(i));
     }
-    return new Blob([new Uint8Array(array)], {type: 'image/jpeg'});
+    return new Blob([new Uint8Array(array)], { type: 'image/jpeg' });
   };
 
   selectAvatar() {
@@ -77,7 +79,7 @@ export class AccountPage {
       loading.present();
       // imageData is either a base64 encoded string or a file URI
       // If it's base64:
-      this.selectedPhoto  = this.dataURItoBlob('data:image/jpeg;base64,' + imageData);
+      this.selectedPhoto = this.dataURItoBlob('data:image/jpeg;base64,' + imageData);
       this.upload(loading);
     }, (err) => {
       // Handle error

@@ -13,7 +13,7 @@ import { User } from '../providers/user';
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage:any = null;
+  rootPage: any = null;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, user: User, public config: Config) {
     let globalActions = function() {
@@ -29,7 +29,7 @@ export class MyApp {
         this.rootPage = TabsPage;
         globalActions();
       }).catch(() => {
-        console.log('you are not authenticated..'); 
+        console.log('you are not authenticated..');
         this.rootPage = LoginPage;
         globalActions();
       });

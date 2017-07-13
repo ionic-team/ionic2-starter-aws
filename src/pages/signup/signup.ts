@@ -2,15 +2,15 @@ import { Component } from '@angular/core';
 
 import { NavController, LoadingController } from 'ionic-angular';
 
-import { LoginPage } from '../login/login';
 import { ConfirmPage } from '../confirm/confirm';
+import { LoginPage } from '../login/login';
 
 import { User } from '../../providers/user';
 
 export class UserDetails {
-    username: string;
-    email: string;
-    password: string;
+  username: string;
+  email: string;
+  password: string;
 }
 
 @Component({
@@ -23,10 +23,8 @@ export class SignupPage {
 
   error: any;
 
-  constructor(public navCtrl: NavController,
-              public user: User,
-              public loadingCtrl: LoadingController) {
-   this.userDetails = new UserDetails();
+  constructor(public navCtrl: NavController, public user: User, public loadingCtrl: LoadingController) {
+    this.userDetails = new UserDetails();
   }
 
   signup() {

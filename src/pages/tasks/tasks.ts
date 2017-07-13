@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 
 import { NavController, ModalController } from 'ionic-angular';
+
 import { TasksCreatePage } from '../tasks-create/tasks-create';
 
 import { DynamoDB, User } from '../../providers/providers';
@@ -18,9 +19,9 @@ export class TasksPage {
   private taskTable: string = 'ionic-mobile-hub-tasks';
 
   constructor(public navCtrl: NavController,
-              public modalCtrl: ModalController,
-              public user: User,
-              public db: DynamoDB) {
+    public modalCtrl: ModalController,
+    public user: User,
+    public db: DynamoDB) {
 
     this.refreshTasks();
   }
@@ -58,7 +59,7 @@ export class TasksPage {
     var charLength = chars.length;
     var result = "";
     let randoms = window.crypto.getRandomValues(new Uint32Array(len));
-    for(var i = 0; i < len; i++) {
+    for (var i = 0; i < len; i++) {
       result += chars[randoms[i] % charLength];
     }
     return result.toLowerCase();
