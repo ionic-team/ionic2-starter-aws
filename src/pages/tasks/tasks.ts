@@ -75,7 +75,7 @@ export class TasksPage {
           'TableName': this.taskTable,
           'Item': item,
           'ConditionExpression': 'attribute_not_exists(id)'
-        }, function(err, data) {
+        }, (err, data) => {
           if (err) { console.log(err); }
           this.refreshTasks();
         });
