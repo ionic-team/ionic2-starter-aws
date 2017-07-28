@@ -33,7 +33,8 @@ export class User {
       let authDetails = this.cognito.makeAuthDetails(username, password);
 
       user.authenticateUser(authDetails, {
-        'onSuccess': function(result) {
+        'onSuccess': (result:any) => {
+
           var logins = {};
           var loginKey = 'cognito-idp.' +
                           aws_cognito_region +
@@ -45,17 +46,20 @@ export class User {
            'IdentityPoolId': aws_cognito_identity_pool_id,
            'Logins': logins
           });
-
+          
           this.isAuthenticated().then(() => {
             resolve();
           }).catch((err) => {
             console.log('auth session failed');
           });
+
         },
 
-        'onFailure': function(err) {
+        'onFailure': (err:any) => {
+
           console.log('authentication failed');
           reject(err);
+
         }
       });
     });
