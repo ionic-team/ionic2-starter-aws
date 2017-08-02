@@ -1,7 +1,7 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Account 
+      Account
     </ion-title>
   </ion-navbar>
 </ion-header>
@@ -13,8 +13,8 @@
     </div>
 
     <button ion-button clear (click)="selectAvatar()">Change photo</button>
-    
-    <input #avatar class="avatar-input" type="file" (change)="upload($event)" />
+
+    <input #avatar class="avatar-input" type="file" (change)="uploadFromFile($event)" />
   </div>
 
   <div>
@@ -25,7 +25,7 @@
       <ion-item *ngFor="let attr of attributes">
         <strong>{{ attr.getName() }}</strong> {{ attr.getValue() }}
       </ion-item>
-    </ion-list>  
+    </ion-list>
   </div>
 
 </ion-content>
