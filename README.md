@@ -67,7 +67,7 @@ Replacing `BUCKET_NAME` with the full name of the S3 bucket found above. This wi
 
 ### Enabling file uploads
 
-The Account page has an example of taking a photo or uploading a file to the `userfiles` S3 bucket. To enable uploads from the web, make sure to edit the CORS Policy for the S3 bucket but opening the bucket with `userfiles` in it from the Resources tab in the Mobile Hub.
+The Account page has an example of taking a photo or uploading a file to the `userfiles` S3 bucket. To enable uploads from the web, make sure to edit the CORS Policy for the S3 bucket by opening the bucket with `userfiles` in it from the Resources tab in the Mobile Hub.
 
 A working, albeit liberal CORS configuration looks like
 
