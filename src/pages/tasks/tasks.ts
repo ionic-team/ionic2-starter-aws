@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
 
-import { NavController, ModalController } from 'ionic-angular';
+import { IonicPage, NavController, ModalController } from 'ionic-angular';
 import { TasksCreatePage } from '../tasks-create/tasks-create';
 
 import { DynamoDB, User } from '../../providers/providers';
 
 declare var AWS: any;
 
+@IonicPage()
 @Component({
   selector: 'page-tasks',
   templateUrl: 'tasks.html'

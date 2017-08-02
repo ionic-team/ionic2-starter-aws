@@ -1,8 +1,11 @@
 import { Component } from '@angular/core';
+import { IonicPage } from 'ionic-angular';
 
 import { SettingsPage } from '../settings/settings';
 import { TasksPage } from '../tasks/tasks';
 
+
+@IonicPage()
 @Component({
   templateUrl: 'tabs.html'
 })

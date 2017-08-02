@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { NavController, LoadingController } from 'ionic-angular';
+import { IonicPage, NavController, LoadingController } from 'ionic-angular';
 
 import { LoginPage } from '../login/login';
 import { ConfirmPage } from '../confirm/confirm';
@@ -13,6 +13,7 @@ export class UserDetails {
     password: string;
 }
 
+@IonicPage()
 @Component({
   selector: 'page-signup',
   templateUrl: 'signup.html'

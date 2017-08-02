@@ -1,6 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 
-import { Config, LoadingController, NavController } from 'ionic-angular';
+import { IonicPage, Config, LoadingController, NavController } from 'ionic-angular';
 
 import { Camera, CameraOptions } from '@ionic-native/camera';
 
@@ -10,6 +10,7 @@ declare var AWS: any;
 declare const aws_user_files_s3_bucket;
 declare const aws_user_files_s3_bucket_region;
 
+@IonicPage()
 @Component({
   selector: 'page-account',
   templateUrl: 'account.html'
