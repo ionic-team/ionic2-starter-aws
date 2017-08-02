@@ -7,6 +7,8 @@ import { Camera, CameraOptions } from '@ionic-native/camera';
 import { DynamoDB, User } from '../../providers/providers';
 
 declare var AWS: any;
+declare const aws_user_files_s3_bucket;
+declare const aws_user_files_s3_bucket_region;
 
 @Component({
   selector: 'page-account',
@@ -33,9 +35,9 @@ export class AccountPage {
     this.selectedPhoto = null;
     this.s3 = new AWS.S3({
       'params': {
-        'Bucket': config.get('aws_user_files_s3_bucket')
+        'Bucket': aws_user_files_s3_bucket
       },
-      'region': config.get('aws_user_files_s3_bucket_region')
+      'region': aws_user_files_s3_bucket_region
     });
     this.sub = AWS.config.credentials.identityId;
     user.getUser().getUserAttributes((err, data) => {
@@ -71,21 +73,36 @@ export class AccountPage {
     }
 
     this.camera.getPicture(options).then((imageData) => {
-      let loading = this.loadingCtrl.create({
-        content: 'Please wait...'
-      });
-      loading.present();
       // imageData is either a base64 encoded string or a file URI
       // If it's base64:
       this.selectedPhoto  = this.dataURItoBlob('data:image/jpeg;base64,' + imageData);
-      this.upload(loading);
+      this.upload();
     }, (err) => {
+      this.avatarInput.nativeElement.click();
       // Handle error
     });
-    //this.avatarInput.nativeElement.click();
   }
 
-  upload(loading: any) {
+  uploadFromFile(event) {
+    const files = event.target.files;
+    console.log('Uploading', files)
+    var reader = new FileReader();
+    reader.readAsDataURL(files[0]);
+    reader.onload = () => {
+      this.selectedPhoto = this.dataURItoBlob(reader.result);
+      this.upload();
+    };
+    reader.onerror = (error) => {
+      alert('Unable to load file. Please try another.')
+    }
+  }
+
+  upload() {
+    let loading = this.loadingCtrl.create({
+      content: 'Uploading image...'
+    });
+    loading.present();
+
     if (this.selectedPhoto) {
       this.s3.upload({
         'Key': 'protected/' + this.sub + '/avatar',
@@ -95,7 +112,7 @@ export class AccountPage {
         this.refreshAvatar();
         console.log('upload complete:', data);
         loading.dismiss();
-      }).catch((err) => {
+      }, err => {
         console.log('upload failed....', err);
         loading.dismiss();
       });
