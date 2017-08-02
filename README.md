@@ -65,6 +65,25 @@ aws s3 cp s3://BUCKET_NAME/aws-config.js src/assets
 
 Replacing `BUCKET_NAME` with the full name of the S3 bucket found above. This will copy the auto-generated `aws-config.js` file into the `src/assets` folder in your Ionic app, which pre-configures all your AWS settings automatically.
 
+### Enabling file uploads
+
+The Account page has an example of taking a photo or uploading a file to the `userfiles` S3 bucket. To enable uploads from the web, make sure to edit the CORS Policy for the S3 bucket but opening the bucket with `userfiles` in it from the Resources tab in the Mobile Hub.
+
+A working, albeit liberal CORS configuration looks like
+
+```xml
+<!-- Sample policy -->
+<CORSConfiguration>
+	<CORSRule>
+		<AllowedOrigin>*</AllowedOrigin>
+		<AllowedMethod>GET</AllowedMethod>
+		<AllowedMethod>POST</AllowedMethod>
+		<AllowedMethod>PUT</AllowedMethod>
+		<AllowedHeader>*</AllowedHeader>
+	</CORSRule>
+</CORSConfiguration>
+```
+
 ### Running the app
 
 Now the app is configured and wired up to the AWS Mobile Hub and AWS services. To run the app in the browser, run
