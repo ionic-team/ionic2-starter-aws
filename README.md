@@ -65,6 +65,12 @@ aws s3 cp s3://BUCKET_NAME/aws-config.js src/assets
 
 Replacing `BUCKET_NAME` with the full name of the S3 bucket found above. This will copy the auto-generated `aws-config.js` file into the `src/assets` folder in your Ionic app, which pre-configures all your AWS settings automatically.
 
+NOTE: If you get this error: "fatal error: Unable to locate credentials", the solution is to run:
+```bash 
+aws configure
+```
+and provide an AWS access key ID and secret (obtained from IAM).
+
 ### Enabling file uploads
 
 The Account page has an example of taking a photo or uploading a file to the `userfiles` S3 bucket. To enable uploads from the web, make sure to edit the CORS Policy for the S3 bucket by opening the bucket with `userfiles` in it from the Resources tab in the Mobile Hub.
