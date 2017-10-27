@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Config } from 'ionic-angular';
 
-import { Cognito } from './providers';
+import { Cognito } from './aws.cognito';
 
 declare var AWS: any;
 declare const aws_cognito_region;
