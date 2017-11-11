@@ -13,9 +13,14 @@ import { User } from '../providers/user';
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage:any = null;
+  rootPage: any = null;
 
-  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, user: User, public config: Config) {
+  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, public user: User, public config: Config) {
+
+  }
+
+  ionViewDidLoad() {
+
     let globalActions = function() {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
@@ -23,13 +28,13 @@ export class MyApp {
       splashScreen.hide();
     };
 
-    platform.ready().then(() => {
-      user.isAuthenticated().then(() => {
+    this.platform.ready().then(() => {
+      this.user.isAuthenticated().then(() => {
         console.log('you are authenticated!');
         this.rootPage = TabsPage;
         globalActions();
       }).catch(() => {
-        console.log('you are not authenticated..'); 
+        console.log('you are not authenticated..');
         this.rootPage = LoginPage;
         globalActions();
       });
